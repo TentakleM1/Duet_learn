@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="form">
+    <button id="btn">Clock</button>
+    <script>
+        const value = document.getElementById('form')
+        const btn = document.getElementById('btn')
+
+        const postData = async (value) => {
+            let response = await fetch('http://localhost:3000/form', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json;charset=utf-8'
+                },
+                body: JSON.stringify({data: value})
+            })
+
+        }
+
+        btn.addEventListener('click', (e) => {
+            if(!value.value) return console.log('not value')
+            postData(value.value)
+        })
+    </script>
+</body>
+</html>
