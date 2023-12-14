@@ -1,18 +1,27 @@
-const value = document.getElementById('form')
-        const btn = document.getElementById('btn')
+const name = document.getElementById('name')
+const firstName = document.getElementById('firstName')
+const btn = document.getElementById('btn')
 
-        const postData = async (value) => {
+        const postData = async (user) => {
             let response = await fetch('http://localhost:3000/form', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json;charset=utf-8'
                 },
-                body: JSON.stringify({data: value})
+                body: JSON.stringify(user)
             })
+        }
 
+        function compileForm(name, firstName) {
+            const data = {
+                name: name,
+                firstName: firstName
+            }
+
+            postData(data)
         }
 
         btn.addEventListener('click', (e) => {
-            if(!value.value) return console.log('not value')
-            postData(value.value)
+            if(!name.value || !firstName.value) return alert('Надо заполнить все поля')
+            compileForm(name.value, firstName.value)
         })

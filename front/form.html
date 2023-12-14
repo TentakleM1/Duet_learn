@@ -3,40 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="form.css">
     <title>Document</title>
 </head>
 <body>
-    <input type="text" id="name">
-    <input type="text" id="firstName">
-    <button id="btn">Clock</button>
-    <script>
-        const name = document.getElementById('name')
-        const firstName = document.getElementById('firstName')
-        const btn = document.getElementById('btn')
-
-        const postData = async (user) => {
-            let response = await fetch('http://localhost:3000/form', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json;charset=utf-8'
-                },
-                body: JSON.stringify(user)
-            })
-        }
-
-        function compileForm(name, firstName) {
-            const data = {
-                name: name,
-                firstName: firstName
-            }
-
-            postData(data)
-        }
-
-        btn.addEventListener('click', (e) => {
-            if(!name.value || !firstName.value) return console.log('not value')
-            compileForm(name.value, firstName.value)
-        })
-    </script>
+    <div class="wrap">
+        <div class="card">
+            <h3>Name</h3>
+            <input type="text" id="name" class="name">
+            <h3>First Name</h3>
+            <input type="text" id="firstName" class="firstName">
+            <button id="btn" class="btn">Clock</button>
+        </div>
+    </div>  
+    <script src="component//form.js"></script>
 </body>
 </html>

@@ -28,6 +28,8 @@ const keyDatafile = () =>{
         console.log("Запись файла завершена")
      })
  }
+ 
+ app.use(express.static('front'));
 
  app.use('/form', (req, res, next) => {
     keyDatafile()
